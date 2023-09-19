@@ -21,21 +21,15 @@ class MovieCell : UITableViewCell{
         movieNameLabel.text = movie.original_title
         DescriptionLabel.text = movie.overview
         let imageUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + movie.poster_path.absoluteString)
-       // let backdropUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + movie.backdrop_path.absoluteString)
         
         // Load image async via Nuke library image loading helper method
        // Nuke.loadImage(with: movie.poster_path, into: moviePosterImage)
         Nuke.loadImage(with: imageUrl, into: moviePosterImage)
-       
-
-        
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    
     
 }

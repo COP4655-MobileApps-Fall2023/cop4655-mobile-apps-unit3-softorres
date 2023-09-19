@@ -4,20 +4,7 @@
 //
 //  Created by Sofia Torres on 9/18/23.
 //
-/*
-import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-
-}
-//like TracksViewController
-*/
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
@@ -102,10 +89,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         print(movies)
         
         tableView.dataSource = self
-        
-        
-        
-
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // TODO: Pt 1 - Pass the selected track to the detail view controller

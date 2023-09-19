@@ -9,6 +9,7 @@ import UIKit
 import Nuke
 
 class PostersViewController: UIViewController, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // the number of items shown should be the number of albums we have.
             posters.count
@@ -102,49 +103,58 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
         // Initiate the network request
         task.resume()
     }
+    /*
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Get the selected poster
+        let selectedPoster = posters[indexPath.item]
 
-}
-/*
+        // Instantiate the DetailViewController from the storyboard
+        if let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewControllerIdentifier") as? DetailViewController {
+            // Pass the selected poster to the DetailViewController
+            detailViewController.poster = selectedPoster
 
-class PostersViewController: UIViewController {
-    //add property
-    var posters: [Poster] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        // Create a search URL for fetching albums (`entity=album`)
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bc5cd9c1a05098330cdba7dd04ec08f6")!
-        let request = URLRequest(url: url)
-        
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            
-            // Handle any errors
-            if let error = error {
-                print("❌ Network error: \(error.localizedDescription)")
-            }
-            
-            // Make sure we have data
-            guard let data = data else {
-                print("❌ Data is nil")
-                return
-            }
-            
-            // Create a JSON Decoder
-            let decoder = JSONDecoder()
-            do {
-                // Try to parse the response into our custom model
-                let response = try decoder.decode(PosterSearchResponse.self, from: data)
-                let posters = response.results
-                print(posters)
-            } catch {
-                print(error.localizedDescription)
-            }
-            // Initiate the network request
-            task.resume()
+            // Push or present the DetailViewController as needed
+            navigationController?.pushViewController(detailViewController, animated: true)
+            // OR
+            // present(detailViewController, animated: true, completion: nil)
         }
-        
     }
+    */
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TODO: Pt 1 - Pass the selected track to the detail view controller
+        // Get the cell that triggered the segue
+        if let cell = sender as? UICollectionViewCell,
+           // Get the index path of the cell from the table view
+           let indexPath = collectionView.indexPath(for: cell),
+           // Get the detail view controller
+           let detailViewController = segue.destination as? DetailViewController {
+            
+            // Use the index path to get the associated track
+            let poster = posters[indexPath.row]
+            
+            // Set the track on the detail view controller
+            detailViewController.poster = poster
+        }
+    }
+     
+    /*
+     override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+         // Get the index path for the current selected table view row (if exists)
+         if let indexPath = collectionView.didSelectItemAt{
+
+             // Deselect the row at the corresponding index path
+             collectionView.deselectRow(at: indexPath, animated: true)
+         }
+        
+     }*/
+
+     
+    
+    
+
+
 }
-*/
+
