@@ -9,19 +9,24 @@ import Foundation
 import Foundation
 
 // TODO: Pt 1 - Create a Track model struct
-struct Movie {
-    let title: String
-    let posterImage: URL
-    let description: String
+struct Movie: Decodable{
+    let original_title: String
+    let poster_path: URL  //change to string to append
+    let overview: String
 
     // Detail properties
-    let back_drop: URL
+    let backdrop_path: URL
     let popularity: Double
-    let voteAverage: Double
-    let voteCount: Int
+    let vote_average: Double
+    let vote_count: Int
+}
+
+struct MovieResponse: Decodable{
+    let results: [Movie]
 }
 
 // TODO: Pt 1 - Create an extension with a mock tracks static var
+/*
 extension Movie {
 
     /// An array of mock tracks
@@ -64,6 +69,7 @@ extension Movie {
         
         
     ]
+ 
 
     // We can now access this array of mock tracks anywhere like this:
     // let tracks = Tracks.mockTracks
@@ -72,6 +78,6 @@ extension Movie {
     ///  ex:  208643 -> "3:28"
     ///  ex:
 }
-
+*/
 
 

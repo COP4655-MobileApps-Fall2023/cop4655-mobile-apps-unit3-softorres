@@ -75,7 +75,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J9B-5P-hl7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bNO-IE-RHK"/>
                             <constraint firstItem="J9B-5P-hl7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nFT-c2-AcQ"/>

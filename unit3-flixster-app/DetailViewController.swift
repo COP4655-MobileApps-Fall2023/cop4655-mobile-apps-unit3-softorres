@@ -30,14 +30,18 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Nuke.loadImage(with: movie.back_drop, into: movieImageView)
-
+        
+            //to load backdrop append url 
+            let backdropUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + movie.backdrop_path.absoluteString)
+            
+            Nuke.loadImage(with: backdropUrl, into: movieImageView)
+        
         // Set labels with the associated track values.
-        movieTitleLabel.text = movie.title
-        shortDescription.text = movie.description
+        movieTitleLabel.text = movie.original_title
+        shortDescription.text = movie.overview
         popular.text = String(movie.popularity) + " Popularity"
-        VoteA.text = String(movie.voteAverage) + " VoteAverage"
-        VoteC.text = String(movie.voteCount) + " Votes"
+        VoteA.text = String(movie.vote_average) + " VoteAverage"
+        VoteC.text = String(movie.vote_count) + " Votes"
         
     }
     
