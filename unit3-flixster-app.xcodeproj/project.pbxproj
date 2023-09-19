@@ -20,6 +20,7 @@
 		A75883CC2AB92CCC00FE441F /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75883CB2AB92CCC00FE441F /* Movie.swift */; };
 		A75883CE2AB92DA500FE441F /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75883CD2AB92DA500FE441F /* MovieCell.swift */; };
 		A75883D02AB9390500FE441F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75883CF2AB9390500FE441F /* DetailViewController.swift */; };
+		A78A543D2AB9B7D70000D504 /* PostersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A543C2AB9B7D70000D504 /* PostersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		A75883CB2AB92CCC00FE441F /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A75883CD2AB92DA500FE441F /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		A75883CF2AB9390500FE441F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A78A543C2AB9B7D70000D504 /* PostersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				A75883CF2AB9390500FE441F /* DetailViewController.swift */,
 				A758839B2AB92AD900FE441F /* ViewController.swift */,
 				A75883CD2AB92DA500FE441F /* MovieCell.swift */,
+				A78A543C2AB9B7D70000D504 /* PostersViewController.swift */,
 				A758839D2AB92AD900FE441F /* Main.storyboard */,
 				A75883A02AB92ADB00FE441F /* Assets.xcassets */,
 				A75883A22AB92ADB00FE441F /* LaunchScreen.storyboard */,
@@ -288,6 +291,7 @@
 				A75883CC2AB92CCC00FE441F /* Movie.swift in Sources */,
 				A75883D02AB9390500FE441F /* DetailViewController.swift in Sources */,
 				A75883CE2AB92DA500FE441F /* MovieCell.swift in Sources */,
+				A78A543D2AB9B7D70000D504 /* PostersViewController.swift in Sources */,
 				A758839A2AB92AD900FE441F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
