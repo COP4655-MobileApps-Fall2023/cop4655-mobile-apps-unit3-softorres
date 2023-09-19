@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -229,14 +230,60 @@
                     <view key="view" contentMode="scaleToFill" id="3Yz-tP-DCw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HQI-sT-xVR">
+                                <rect key="frame" x="16" y="103" width="361" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AjT-pv-q1A">
+                                    <size key="itemSize" width="116" height="108"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PosterCell" id="FEY-LR-Mei" customClass="PosterCell" customModule="unit3_flixster_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="108"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2pE-m1-8P5">
+                                            <rect key="frame" x="0.0" y="0.0" width="116" height="108"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Hj-1x-Jfi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="108"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="4Hj-1x-Jfi" secondAttribute="bottom" id="9at-SS-hPm"/>
+                                                <constraint firstItem="4Hj-1x-Jfi" firstAttribute="top" secondItem="2pE-m1-8P5" secondAttribute="top" id="CXg-lT-opX"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Hj-1x-Jfi" secondAttribute="trailing" id="Ff7-5J-Mo7"/>
+                                                <constraint firstItem="4Hj-1x-Jfi" firstAttribute="leading" secondItem="2pE-m1-8P5" secondAttribute="leading" id="KeM-zy-BrE"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="116" height="108"/>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="4Hj-1x-Jfi" id="7xy-9Z-lvN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="YIz-en-YQu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HQI-sT-xVR" firstAttribute="top" secondItem="3Yz-tP-DCw" secondAttribute="topMargin" id="1AB-BW-Xcu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="HQI-sT-xVR" secondAttribute="bottom" id="RWG-Ra-Mbl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HQI-sT-xVR" secondAttribute="trailing" id="imM-gk-eXW"/>
+                            <constraint firstItem="HQI-sT-xVR" firstAttribute="leading" secondItem="3Yz-tP-DCw" secondAttribute="leadingMargin" id="wT9-yg-u1w"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ixF-8U-skp"/>
+                    <connections>
+                        <outlet property="collectionView" destination="HQI-sT-xVR" id="rdJ-z6-DUS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3T-6B-atD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1883" y="728"/>
+            <point key="canvasLocation" x="1881.679389312977" y="727.46478873239437"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QU1-Et-lc0">
