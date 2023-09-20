@@ -31,6 +31,7 @@ Here's a walkthrough of implemented user stories:
 Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove this reminder once you upload your README. 
 
 ![Alt Text](https://submissions.us-east-1.linodeobjects.com/ios102/YCkowv4f.gif)
+
 [Guide]](https://www.youtube.com/watch?v=GA92eKlYio4) .
 
 ## Notes
