@@ -33,9 +33,10 @@ Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove th
 ![Alt Text](https://submissions.us-east-1.linodeobjects.com/ios102/YCkowv4f.gif)
 
 <div>
-    <a href="https://www.loom.com/share/2bf83024616a4725a3afb76e18a2b688"></a>
-    <a href="https://www.loom.com/share/2bf83024616a4725a3afb76e18a2b688">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/2bf83024616a4725a3afb76e18a2b688-with-play.gif">
+    <a href="https://www.loom.com/share/5f249d59318a4967a0ce88cccd522c36">
+    </a>
+    <a href="https://www.loom.com/share/5f249d59318a4967a0ce88cccd522c36">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/5f249d59318a4967a0ce88cccd522c36-with-play.gif">
     </a>
   </div>
 
