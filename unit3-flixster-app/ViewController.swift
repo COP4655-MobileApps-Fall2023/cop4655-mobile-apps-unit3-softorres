@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }

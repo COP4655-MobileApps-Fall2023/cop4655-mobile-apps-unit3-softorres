@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct PosterSearchResponse: Decodable {
-    let results: [Poster]
-}
-
 struct Poster: Decodable {
     
     let original_title: String
@@ -22,4 +18,8 @@ struct Poster: Decodable {
     let popularity: Double
     let vote_average: Double
     let vote_count: Int
+}
+
+struct PosterSearchResponse: Decodable {
+    let results: [Movie]
 }

@@ -9,46 +9,47 @@ import UIKit
 import Nuke
 
 class PostersViewController: UIViewController, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // the number of items shown should be the number of albums we have.
-            posters.count
+        movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Get a collection view cell (based in the identifier you set in storyboard) and cast it to our custom AlbumCell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCell", for: indexPath) as! PosterCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCell", for: indexPath) as! PosterCell
 
-            // Use the indexPath.item to index into the albums array to get the corresponding album
-            let poster = posters[indexPath.item]
+        // Use the indexPath.item to index into the albums array to get the corresponding album
+        let movie = movies[indexPath.item]
 
-            // Get the artwork image url
-           // let imageUrl = poster.poster_path
-        let imageUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + poster.poster_path.absoluteString)
+        // Get the artwork image url
+        let imageUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + movie.poster_path.absoluteString)
             // Set the image on the image view of the cell
-            Nuke.loadImage(with: imageUrl, into: cell.posterImageView)
+   
+        // Load image async via Nuke library image loading helper method
+        Nuke.loadImage(with: imageUrl, into: cell.posterImageView)
 
-            return cell
+        return cell
     }
     
     
-    //add property
-    var posters: [Poster] = []
 
+    
+    
+   
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    var movies: [Movie] = []
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         collectionView.dataSource = self
-
-
-        // Do any additional setup after loading the view.
-        // Create a search URL for fetching albums (`entity=album`)
+        super.viewDidLoad()
+        // Create a search URL for fetching albums (`entity=movie`)
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bc5cd9c1a05098330cdba7dd04ec08f6")!
         let request = URLRequest(url: url)
-
+        
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             
             // Handle any errors
@@ -61,24 +62,28 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
                 print("❌ Data is nil")
                 return
             }
+     
             
             // Create a JSON Decoder
             let decoder = JSONDecoder()
             do {
                 // Try to parse the response into our custom model
                 let response = try decoder.decode(PosterSearchResponse.self, from: data)
-                let posters = response.results
+                let movies = response.results
                 
+               
                 DispatchQueue.main.async {
-                    self?.posters = posters
+                    self?.movies = movies
                     self?.collectionView.reloadData()
                 }
-               // print(albums)
-            }
-            catch {
+                
+                print(movies)
+            } catch {
                 print(error.localizedDescription)
             }
         }
+        
+        task.resume()
         // Get a reference to the collection view's layout
         // We want to dynamically size the cells for the available space and desired number of columns.
         // NOTE: This collection view scrolls vertically, but collection views can alternatively scroll horizontally.
@@ -86,75 +91,45 @@ class PostersViewController: UIViewController, UICollectionViewDataSource {
 
         // The minimum spacing between adjacent cells (left / right, in vertical scrolling collection)
         // Set this to taste.
-        layout.minimumInteritemSpacing = 4
+//        layout.minimumInteritemSpacing = 1
+//
+//        // The minimum spacing between adjacent cells (top / bottom, in vertical scrolling collection)
+//        // Set this to taste.
+//        layout.minimumLineSpacing = 1
+//
+//        // Set this to however many columns you want to show in the collection.
+//     //let numberOfColumns: CGFloat = 3
+//
+//        let width = (view.frame.size.width - layout.minimumInteritemSpacing * 2) / 4
+//                layout.itemSize = CGSize(width: width, height: width * 1.5)
+        
 
-        // The minimum spacing between adjacent cells (top / bottom, in vertical scrolling collection)
-        // Set this to taste.
-        layout.minimumLineSpacing = 4
+                layout.minimumInteritemSpacing = 0
+                layout.minimumLineSpacing = 5
+                let numberOfColumns: CGFloat = 3
+                let width = (collectionView.bounds.width - layout.minimumInteritemSpacing * (numberOfColumns - 1)) / numberOfColumns
+                layout.itemSize = CGSize(width: width, height: width*3/2)
 
-        // Set this to however many columns you want to show in the collection.
-        let numberOfColumns: CGFloat = 3
+        // Calculate the height based on the aspect ratio of your images or set it to a fixed value as needed.
+  
 
-        // Calculate the width each cell need to be to fit the number of columns, taking into account the spacing between cells.
-        let width = (collectionView.bounds.width - layout.minimumInteritemSpacing * (numberOfColumns - 1)) / numberOfColumns
-
-        // Set the size that each tem/cell should display at
-        layout.itemSize = CGSize(width: width, height: width)
-        // Initiate the network request
-        task.resume()
+        // Set the size that each item/cell should display at
     }
-    /*
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Get the selected poster
-        let selectedPoster = posters[indexPath.item]
-
-        // Instantiate the DetailViewController from the storyboard
-        if let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewControllerIdentifier") as? DetailViewController {
-            // Pass the selected poster to the DetailViewController
-            detailViewController.poster = selectedPoster
-
-            // Push or present the DetailViewController as needed
-            navigationController?.pushViewController(detailViewController, animated: true)
-            // OR
-            // present(detailViewController, animated: true, completion: nil)
-        }
-    }
-    */
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // TODO: Pt 1 - Pass the selected track to the detail view controller
-        // Get the cell that triggered the segue
-        if let cell = sender as? UICollectionViewCell,
-           // Get the index path of the cell from the table view
-           let indexPath = collectionView.indexPath(for: cell),
-           // Get the detail view controller
-           let detailViewController = segue.destination as? DetailViewController {
-            
-            // Use the index path to get the associated track
-            let poster = posters[indexPath.row]
-            
-            // Set the track on the detail view controller
-            detailViewController.poster = poster
+
+            if let cell = sender as? PosterCell,
+               // Get the index path of the cell from the table view
+               let indexPath = collectionView.indexPath(for: cell),
+               // Get the detail view controller
+               let detailViewController = segue.destination as? DetailViewController {
+
+                // Use the index path to get the associated track
+                let movie = movies[indexPath.item]
+
+                // Set the track on the detail view controller
+                detailViewController.movie = movie
+            }
         }
-    }
-     
-    /*
-     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-         // Get the index path for the current selected table view row (if exists)
-         if let indexPath = collectionView.didSelectItemAt{
-
-             // Deselect the row at the corresponding index path
-             collectionView.deselectRow(at: indexPath, animated: true)
-         }
-        
-     }*/
-
-     
-    
-    
-
-
+ 
 }
-

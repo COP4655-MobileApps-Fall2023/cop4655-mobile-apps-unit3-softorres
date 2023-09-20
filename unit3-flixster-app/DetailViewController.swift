@@ -30,21 +30,34 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-            //to load backdrop append url 
+        if let movie = movie{
+            //to load backdrop append url
             let backdropUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + movie.backdrop_path.absoluteString)
             
-            Nuke.loadImage(with: backdropUrl, into: movieImageView)
+            Nuke.loadImage(with: backdropUrl!, into: movieImageView)
+            
+            // Set labels with the associated track values.
+            movieTitleLabel.text = movie.original_title
+            shortDescription.text = movie.overview
+            popular.text = String(movie.popularity) + " Popularity"
+            VoteA.text = String(movie.vote_average) + " VoteAverage"
+            VoteC.text = String(movie.vote_count) + " Votes"
+        }
         
-        // Set labels with the associated track values.
-        movieTitleLabel.text = movie.original_title
-        shortDescription.text = movie.overview
-        popular.text = String(movie.popularity) + " Popularity"
-        VoteA.text = String(movie.vote_average) + " VoteAverage"
-        VoteC.text = String(movie.vote_count) + " Votes"
-        
+//        if let poster = poster{
+//            //to load backdrop append url
+//            let backdropUrl = URL(string: "https://image.tmdb.org/t/p/w300/" + movie.backdrop_path.absoluteString)
+//
+//            Nuke.loadImage(with: backdropUrl!, into: movieImageView)
+//
+//            // Set labels with the associated track values.
+//            movieTitleLabel.text = poster.original_title
+//            shortDescription.text = poster.overview
+//            popular.text = String(poster.popularity) + " Popularity"
+//            VoteA.text = String(poster.vote_average) + " VoteAverage"
+//            VoteC.text = String(poster.vote_count) + " Votes"
+//        }
     }
-    
 
 
 }
