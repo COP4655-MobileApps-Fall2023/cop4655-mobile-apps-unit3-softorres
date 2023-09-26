@@ -26,9 +26,8 @@ The following **optional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of my app:
 
-Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove this reminder once you upload your README. 
 
 ![Alt Text](https://submissions.us-east-1.linodeobjects.com/ios102/YCkowv4f.gif)
 
@@ -44,9 +43,9 @@ Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove th
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-Connecting the Porject view controller to the detail controller was the most difficult part of this assignment. Trouble with the connection and using the wrong
-datastruct is where I went wrong, luckily ater some time I was able to figure it out
+Challenges:
+Connecting the Project view controller to the detail controller was the most difficult part of this assignment. Trouble with the connection and using the wrong
+datastruct is where I went wrong, luckily after some time I was able to figure it out
 
 ## License
 
